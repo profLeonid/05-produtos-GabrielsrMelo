@@ -8,21 +8,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Produtos</title>
 </head>
-<body class="bg-gray-400 flex flex-col items-center justify-center h-screen gap-4">
-    <h1 class="text-2xl" >Lista de Produtos</h1>
+<body class="bg-violet-300 flex flex-col items-center justify-center h-screen ">
+    <div class="bg-violet-500 flex flex-col items-center justify-center border-2 w-xl h- gap-4">
+        <h1 class="text-2xl" >Lista de Produtos</h1>
     <input 
         type="text" 
-        class="border rounded px-8 py-2"
+        class="border-2 rounded px-8 py-2"
         id="codigo"
     >
     <input 
         type="text" 
-        class="border rounded px-8 py-2"
+        class="border-2 rounded px-8 py-2"
         id="produto"
     >
     <input 
         type="text" 
-        class="border rounded px-8 py-2"
+        class="border-2 rounded px-8 py-2"
         id="quantidade"
     >
 
@@ -33,6 +34,23 @@
     >
         Adicionar
     </button>
-    <div id="lista" class=" gap-2"></div>
+    <div class="w-full bg-white rounded shadow-md mt-4 overflow-hidden border border-violet-400">
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-violet-600 text-white sticky top-0">
+                <tr>
+                    <th class="px-4 py-2 w-1/4">Cód</th>
+                    <th class="px-4 py-2 w-1/2">Produto</th>
+                    <th class="px-4 py-2 w-1/4">Qtd</th>
+                </tr>
+            </thead>
+        </table>
+    
+        <div class="max-h-48 overflow-y-auto">
+            <table class="w-full text-left border-collapse">
+                <tbody id="lista" class="divide-y divide-gray-200">
+                    </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>

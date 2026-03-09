@@ -6,27 +6,26 @@ function adicionarProduto() {
     const codigo = document.getElementById('codigo')
     const quantidade = document.getElementById('quantidade')
 
-    // Chamamos a função para cada input separadamente
-    criarCaixa(codigo.value)
-    criarCaixa(produto.value)
-    criarCaixa(quantidade.value)
-    
-    ;
-    
-    // Limpa os campos após adicionar para facilitar o uso
-    codigo.value = ''
-    produto.value = ''
-    quantidade.value = ''
+    if (codigo.value === "" || produto.value === "" || quantidade.value === "") return;
 
-    // Criamos uma função interna para não repetir o mesmo código 3 vezes
-    function criarCaixa(valor) {
-        if (valor ==="") return; // Ignora se o campo estiver vazio
-        const novoSpan = document.createElement('span')
-        novoSpan.textContent = valor
-        // Suas classes do Tailwind para o visual amarelo
-        novoSpan.className = 'bg-yellow-100 px-8 py-2 border border-yellow-200 rounded shadow-sm'
-        lista.appendChild(novoSpan)
+    const novaLinha = document.createElement('tr')
+    novaLinha.className = 'hover:bg-violet-50 transition-colors'
+
+    // Criamos as colunas com larguras fixas para alinhar com o topo
+    novaLinha.appendChild(criarCelula(codigo.value, 'w-1/4'))
+    novaLinha.appendChild(criarCelula(produto.value, 'w-1/2'))
+    novaLinha.appendChild(criarCelula(quantidade.value, 'w-1/4'))
+
+    lista.appendChild(novaLinha)
+    
+    // Limpeza
+    codigo.value = ''; produto.value = ''; quantidade.value = '';
+
+    function criarCelula(valor, largura) {
+        const td = document.createElement('td')
+        td.textContent = valor
+        // Adicionamos a classe de largura que passamos por parâmetro
+        td.className = `px-4 py-2 text-gray-800 border-b border-gray-100 ${largura}`
+        return td
     }
-
-
 }
