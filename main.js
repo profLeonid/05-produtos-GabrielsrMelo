@@ -6,13 +6,17 @@ function adicionarProduto() {
     const codigo = document.getElementById('codigo')
     const quantidade = document.getElementById('quantidade')
 
-    if (codigo.value === "" || produto.value === "" || quantidade.value === "") return;
+    if (codigo.value === "" || produto.value === "" || quantidade.value === ""){
+        alert("Preencher todos os campos")
+    }else if(isNaN(codigo.value) || isNaN(quantidade.value)){
+        alert("Apenas números nos campos CÓDIGO e QUANTIDADE!")
+    }
 
     const novaLinha = document.createElement('tr')
-    novaLinha.className = 'hover:bg-violet-50 transition-colors'
+    novaLinha.className = 'hover:bg-gray-200 transition-colors'
 
     // Criamos as colunas com larguras fixas para alinhar com o topo
-    novaLinha.appendChild(criarCelula(codigo.value, 'w-1/4'))
+    novaLinha.appendChild(criarCelula(codigo.value, 'w-1/4 '))
     novaLinha.appendChild(criarCelula(produto.value, 'w-1/2'))
     novaLinha.appendChild(criarCelula(quantidade.value, 'w-1/4'))
 
